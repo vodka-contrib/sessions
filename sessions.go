@@ -6,11 +6,11 @@ import (
 
 	"github.com/gorilla/context"
 	"github.com/gorilla/sessions"
-	"github.com/labstack/echo"
+	"github.com/insionng/vodka"
 )
 
 const (
-	DefaultKey  = "echo-sessions"
+	DefaultKey  = "vodka-sessions"
 	errorFormat = "[sessions] ERROR! %s\n"
 )
 
@@ -57,8 +57,8 @@ type Session interface {
 	Save() error
 }
 
-func Sessions(name string, store Store) echo.HandlerFunc {
-	return func(c *echo.Context) error {
+func Sessions(name string, store Store) vodka.HandlerFunc {
+	return func(c *vodka.Context) error {
 		s := &session{name, c.Request(), store, nil, false, c.Response()}
 		c.Set(DefaultKey, s)
 		defer context.Clear(c.Request())
@@ -142,6 +142,6 @@ func (s *session) Written() bool {
 }
 
 // shortcut to get session
-func Default(c *echo.Context) Session {
+func Default(c *vodka.Context) Session {
 	return c.Get(DefaultKey).(Session)
 }
