@@ -5,13 +5,13 @@ sessions
 
 ```
 func main() {
-	e := echo.New()
+	e := vodka.New()
 	store := sessions.NewCookieStore([]byte("123456"))
-	e.Use(sessions.Sessions("echosession", store))
+	e.Use(sessions.Sessions("vodkasession", store))
 	e.Use(mw.Logger())
 	e.Use(mw.Recover())
 
-	e.Get("/", func(c *echo.Context) error {
+	e.Get("/", func(c *vodka.Context) error {
 		session := sessions.Default(c)
 		var value int
 		val := session.Get("key")
