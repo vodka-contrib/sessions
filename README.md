@@ -3,7 +3,14 @@ sessions
 
 # Usage
 
-```
+```go
+package main
+
+import (
+	"github.com/insionng/vodka"
+	"github.com/vodka-contrib/sessions"
+)
+
 func main() {
 	e := vodka.New()
 	store := sessions.NewCookieStore([]byte("123456"))
