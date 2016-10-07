@@ -1,5 +1,5 @@
 # sessions
-sessions
+sessions - just for vodka v1
 
 # Usage
 
